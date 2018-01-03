@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text>{{motto}}</text>
+  </view>
+  <view class="flex-wrp saoyisao">
+    <view class="flex-item">
+      <button type="primary" size="mini" bindtap="scancode">扫一扫</button>
+      <button type="primary" size="mini" bindtap="payment">打赏</button>
+    </view>
+    <view class="flex-item">
+      <text>{{saoyisao.result}}</text>
+    </view>
+    <view class="flex-item">
+      <map bindmarkertap="markertap" longitude='{{location.longitude}}' latitude='{{location.latitude}}'></map>
+    </view>
+  </view>
+</view>
